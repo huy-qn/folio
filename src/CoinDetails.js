@@ -5,18 +5,21 @@ class CoinDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: {
-        marketData: null,
-        holdingAmount: ''
-      }
+      data: {}
     }
   }
   componentDidMount() {
-    axios.get(`https://api.coinmarketcap.com/v1/ticker/${this.props.coinName}/?convert=USD`)
+    axios.get(`https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${this.props.coinName}&tsyms=USD,BTC,EUR`)
     .then(response => {
+      console.log(response.data)
       this.setState({
         data: {
-          marketData: response.data,
+          marketData: {
+            USD: response.data.RAW[`${this.props.coinName}`].USD,
+            EUR: response.data.RAW[`${this.props.coinName}`].EUR,
+            BTC: response.data.RAW[`${this.props.coinName}`].BTC
+          },
+          coinName: this.props.coinName,
           holdingAmount: this.props.holdingAmount
         }
       })

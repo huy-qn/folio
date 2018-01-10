@@ -13,9 +13,9 @@ const getBalanceDifferent = (latest, secondLatest) => {
   return output;
 }
 
-const PortfolioDetailsView = ( {data, latestBalance} ) => {
+const PortfolioDetailsView = ( {onChange, data, latestBalance} ) => {
   return (
-    <div>
+    <div onChange={onChange}>
       <div className="tc">
         <h1 className="ttu f7 gray">portfolio balance</h1>
         <div className="mb2"><span className="f5 black">$</span><span className="f2 black">{formatMoney(latestBalance)}</span></div>

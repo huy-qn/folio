@@ -16,12 +16,11 @@ class PortfolioDetails extends Component {
     this.getCurrentBalance();
   }
 
-
   getCurrentBalance = () => {
     this.state.data.holdings.map((item,index) => {
-      axios.get(`https://api.coinmarketcap.com/v1/ticker/${item.id}/?convert=USD`)
+      axios.get(`https://min-api.cryptocompare.com/data/pricehistorical?fsym=${item.id}&tsyms=USD`)
       .then(response => {
-        let value = item.amount * response.data[0].price_usd;
+        let value = item.amount * response.data[`${item.id}`].USD;
         this.setState({
           latestBalance: this.state.latestBalance + value
         })
@@ -43,14 +42,10 @@ class PortfolioDetails extends Component {
       <View
         data={this.state.data}
         latestBalance={this.state.latestBalance}
-        onChange={this.handleChange}
       />
     );
   }
 
-  handleChange = () => {
-    console.log("changed")
-  }
 }
 
 
