@@ -1,0 +1,25 @@
+{
+  "name": "folio",
+  "version": "0.1.0",
+  "private": true,
+  "devDependencies": {
+    "react-scripts": "1.0.17"
+  },
+  "dependencies": {
+    "axios": "^0.17.1",
+    "chartkick": "^2.2.4",
+    "highcharts": "^6.0.4",
+    "moment": "^2.20.1",
+    "react": "^16.2.0",
+    "react-chartkick": "^0.1.6",
+    "react-dom": "^16.2.0",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
