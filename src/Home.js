@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import CoinDetails from './CoinDetails';
 import PortfolioDetails from './PortfolioDetails';
 import CoinList from './CoinList';
 
@@ -22,16 +21,16 @@ class Home extends Component {
         ,
         holdings: [
           {
-            id: 'BTC',
-            amount: 1
-          },
-          {
-            id: 'XRP',
-            amount: 500
-          },
-          {
             id: 'SUMO',
             amount: 35
+          },
+          {
+            id: 'BTC',
+            amount: 0.12516
+          },
+          {
+            id: 'XVG',
+            amount: 125
           }
         ]
       }
@@ -39,6 +38,7 @@ class Home extends Component {
   }
 
   render() {
+    console.log(this.props)
     return (
       <div>
         <PortfolioDetails data={this.state.data}/>

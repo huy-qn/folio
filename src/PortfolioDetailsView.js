@@ -13,23 +13,24 @@ const getBalanceDifferent = (latest, secondLatest) => {
   return output;
 }
 
-const PortfolioDetailsView = ( {onChange, data, latestBalance} ) => {
+const PortfolioDetailsView = (props) => {
+  console.log(props.chartData)
   return (
-    <div onChange={onChange}>
+    <div>
       <div className="tc">
         <h1 className="ttu f7 gray">portfolio balance</h1>
-        <div className="mb2"><span className="f5 black">$</span><span className="f2 black">{formatMoney(latestBalance)}</span></div>
+        <div className="mb2"><span className="f5 black">$</span><span className="f2 black">{formatMoney(props.latestBalance)}</span></div>
         <div>
           {
-            getBalanceDifferent(data.balance[data.balance.length - 1][1], data.balance[data.balance.length - 2][1]) > 0 ?
-            <span className="f5 green mr1">+{formatMoney(getBalanceDifferent(data.balance[data.balance.length - 1][1], data.balance[data.balance.length - 2][1]))}</span> :
-            <span className="f5 red mr1">{formatMoney(getBalanceDifferent(data.balance[data.balance.length - 1][1], data.balance[data.balance.length - 2][1]))}</span>
+            getBalanceDifferent(props.chartData[props.chartData.length - 1][1], props.chartData[props.chartData.length - 2][1]) > 0 ?
+            <span className="f5 green mr1">+{formatMoney(getBalanceDifferent(props.chartData[props.chartData.length - 1][1], props.chartData[props.chartData.length - 2][1]))}</span> :
+            <span className="f5 red mr1">{formatMoney(getBalanceDifferent(props.chartData[props.chartData.length - 1][1], props.chartData[props.chartData.length - 2][1]))}</span>
           }
-          <span className="f5 green">({(getBalanceDifferent(data.balance[data.balance.length - 1][1], data.balance[data.balance.length - 2][1]) / data.balance[data.balance.length - 2][1] * 100).toFixed(0)}%)</span></div>
+          <span className="f5 green">({(getBalanceDifferent(props.chartData[props.chartData.length - 1][1], props.chartData[props.chartData.length - 2][1]) / props.chartData[props.chartData.length - 2][1] * 100).toFixed(0)}%)</span></div>
       </div>
       <div>
         <LineChart
-          data={data.balance}
+          data={props.chartData}
           height="100px"
           library={
             {

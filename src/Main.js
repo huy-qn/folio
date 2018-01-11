@@ -8,8 +8,8 @@ class Main extends Component {
     return (
       <main>
         <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/new" component={NewTransaction} />
+            <Route exact path="/" render={() => <Home data={this.props}/>}/>
+            <Route path="/new" render={() => <NewTransaction data={this.props}/>} />
         </Switch>
       </main>
     );
